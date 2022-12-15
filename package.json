@@ -1,0 +1,14 @@
+{
+	"scripts": {
+		"test": "ava"
+	},
+	"type": "module",
+	"devDependencies": {
+		"ava": "^5.1.0"
+	},
+	"ava": {
+		"files": [
+			"test/*"
+		]
+	}
+}
