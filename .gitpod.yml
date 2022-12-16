@@ -4,7 +4,7 @@
 
 tasks:
   - init: node --version
-  - init: npm install && npm run build && npm install -g eslint
+  - init: npm install
   - init: npm init ava
   - init: npm install express open
 
