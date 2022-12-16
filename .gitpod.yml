@@ -6,3 +6,4 @@ tasks:
   - init: node --version
   - init: npm install
   - init: npm init ava
+  - init: npm install express open
