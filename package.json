@@ -2,7 +2,7 @@
 	"scripts": {
 		"test": "ava"
 	},
-	"type": ["module", "commonjs"],
+	"type": "module",
 	"devDependencies": {
 		"ava": "^5.1.0"
 	},
