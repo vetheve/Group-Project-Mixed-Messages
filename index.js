@@ -1,24 +1,4 @@
 /**
- * Create a Local Server with Express and Opening a Website.
- */
-
-// Import the express and open modules
-import express from 'express';
-import open from 'open';
-
-// Create an instance of the express app
-const app = express();
-
-// Set up your routes and middleware here
-
-// Start the server on port 3000
-const port = 3000;
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
-  open(`http://localhost:${port}`);
-});
-
-/**
  * Update the text of the li elements for each zodiac sign.
  */
 

@@ -1,0 +1,91 @@
+const prompt = require('prompt-sync')({sigint: true});
+
+const hat = '^';
+const hole = 'O';
+const fieldCharacter = '░';
+const pathCharacter = '*';
+
+class Field {
+    // Constructor method that takes a field argument
+    constructor(field) {
+        // Check if field is defined before assigning it to the _field property
+        if (field) {
+            this._field = field;
+            this._x = 0;
+            this._y = 0;
+        }
+    }
+
+    // Getter for the field property
+    get field() {
+        return this._field;
+    }
+
+    // Method for printing the field array in a two-dimensional plane
+    print() {
+        // Use map and forEach to iterate over the elements of the field array and print them to the console
+        this._field.map(subArray => subArray.map(element => element)).forEach(row => console.log(row.join(' ')));
+    }
+
+    // Method for handling gameplay, including reading user input and moving the player
+    gameplay() {
+        // Read user input and convert it to lowercase
+        let move = prompt('Which direction do you want to move in? (Up: z, Down: s, Left: q, Right: d)').toLowerCase();
+        // Use a switch statement to handle different directions
+        switch (move) {
+            case 'z':
+                console.log('Moving up');
+                this._y -= 1;
+                break;
+            case 's':
+                console.log('Moving down');
+                this._y += 1;
+                break;
+            case 'q':
+                console.log('Moving left');
+                this._x -= 1;
+                break;
+            case 'd':
+                console.log('Moving right');
+                this._x += 1;
+                break;
+        }
+    }
+
+    // Static method for initializing a field with a specified height, width, and percentage of holes
+    static initiliazeField(height, width, percentage) {
+        // Function for determining whether a field character or a hole should be placed at a given position
+        const fieldOrHole = percentage => {
+            // Return a hole if the percentage is between 0 and 35, and a field character otherwise
+            // If the percentage is invalid, print an error message to the console
+            return percentage >= 0 && percentage <= 35 ?
+                Math.floor(Math.random() * 100) < percentage ?
+                hole :
+                fieldCharacter :
+                console.log("Please enter a number between 0 - 35");
+        };
+
+        // Initialize an empty array for storing the rows of the field
+        const rows = [];
+        // Iterate over the height of the field
+        for (let i = 0; i < height; i++) {
+            // Initialize an empty array for storing the elements of the current row
+            const row = [];
+            // Iterate over the width of the field
+            for (let j = 0; j < width; j++) {
+                // Push the result of the fieldOrHole function to the current row
+                row.push(fieldOrHole(percentage));
+            }
+            // Push the current row to the rows array
+            rows.push(row);
+        }
+        // Return the rows array
+        return rows;
+    }
+};
+
+const arr = new Field(Field.initiliazeField(20,20,35));
+arr.print();
+console.log(arr.field[0][1]);
+const dimensions = [ arr.field.length, arr.field[0].length ];
+console.log(dimensions);
