@@ -1,6 +1,6 @@
 /**
  * Update the text of the li elements for each zodiac sign.
- */
+ **/
 
 // Import the displayQuote, displayPrediction, and displayFunFact functions from the display.js module
 import {
